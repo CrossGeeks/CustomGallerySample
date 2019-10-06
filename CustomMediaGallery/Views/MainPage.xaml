@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" x:Class="CustomMediaGallery.MainPage"
+             Title="{Binding Title}"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true">
+    <ContentPage.Content>
+            <!--ListView  x:Name="mainLayout"  ItemsSource="{Binding MediaAssets}" CachingStrategy="RecycleElement"
+                        android:ListView.IsFastScrollEnabled="true">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                             <Image Source="{Binding PreviewPath}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference mainLayout}, Path=BindingContext.ItemTappedCommand}" CommandParameter="{Binding .}"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </ViewCell>
+                     </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView-->
+        <flv:FlowListView x:Name="mainLayout" FlowColumnCount="4" SelectionMode="None" SeparatorVisibility="None" HasUnevenRows="True" FlowColumnMinWidth="150"
+	        FlowItemsSource="{Binding MediaAssets}" 
+                          FlowItemTappedCommand="{Binding ItemTappedCommand}">
+
+	        <flv:FlowListView.FlowColumnTemplate>
+		        <DataTemplate>
+			          <Image Source="{Binding PreviewPath}" HeightRequest="300" WidthRequest="300">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference mainLayout}, Path=BindingContext.ItemTappedCommand}" CommandParameter="{Binding .}"/>
+                                </Image.GestureRecognizers>
+                       </Image>
+		        </DataTemplate>
+	        </flv:FlowListView.FlowColumnTemplate>
+
+        </flv:FlowListView>
+            <!--CollectionView x:Name="mainLayout" ItemsSource="{Binding MediaAssets}" >
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="4"  >
+
+                </GridItemsLayout>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding PreviewPath}">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference mainLayout}, Path=BindingContext.ItemTappedCommand}" CommandParameter="{Binding .}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView-->
+    </ContentPage.Content>
+</ContentPage>

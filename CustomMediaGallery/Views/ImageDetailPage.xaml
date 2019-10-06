@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:CustomMediaGallery.Views"
+             x:Class="CustomMediaGallery.ImageDetailPage">
+    <ContentPage.Content>
+        <Grid Padding="20">
+			<views:PinchToZoomContainer>
+				<views:PinchToZoomContainer.Content>
+					<Image x:Name="image" />
+				</views:PinchToZoomContainer.Content>
+			</views:PinchToZoomContainer>
+		</Grid>
+    </ContentPage.Content>
+</ContentPage>
