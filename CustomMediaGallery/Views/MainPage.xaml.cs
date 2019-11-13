@@ -21,7 +21,5 @@ namespace CustomMediaGallery
             BindingContext = new MainViewModel(mediaService);
             InitializeComponent();
         }
-
-        
     }
 }

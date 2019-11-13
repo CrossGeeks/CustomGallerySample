@@ -1,16 +1,13 @@
-﻿using System;
-
-using Android.App;
+﻿using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
 using Acr.UserDialogs;
 using CustomMediaGallery.Droid.Services;
 using CustomMediaGallery.Services;
 using Xamarin.Forms;
 using Octane.Xamarin.Forms.VideoPlayer.Android;
+using DLToolkit.Forms.Controls;
 
 namespace CustomMediaGallery.Droid
 {
@@ -28,6 +25,7 @@ namespace CustomMediaGallery.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             UserDialogs.Init(() => this);
+            FlowListView.Init();
             Android.Glide.Forms.Init(this);
             FormsVideoPlayer.Init();
             LoadApplication(new App(mediaService));

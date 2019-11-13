@@ -117,49 +117,6 @@ namespace CustomMediaGallery.Droid.Services
             return await completedTask;
         }
 
-        /*async Task<IList<MediaAsset>> LoadMediaAsync()
-        {
-            IList<MediaAsset> assets = new List<MediaAsset>();
-            var hasPermission = await RequestPermissionAsync();
-            if (hasPermission)
-            {
-                var uri = MediaStore.Images.Media.ExternalContentUri;
-                var ctx = Application.Context;
-                await Task.Run(() =>
-                {
-                    var cursor = ctx.ApplicationContext.ContentResolver.Query(uri, new string[]
-                    {
-                        MediaStore.Images.ImageColumns.Data,
-                        MediaStore.Images.ImageColumns.DisplayName,
-                        MediaStore.Images.ImageColumns.DateAdded,
-                        MediaStore.Images.ImageColumns.Title
-                    }, null, null, $"{  MediaStore.Images.ImageColumns.DateAdded} DESC");
-                    if (cursor.Count > 0)
-                    {
-                        while (cursor.MoveToNext())
-                        {
-                            var path = GetString(cursor, MediaStore.Images.ImageColumns.Data);
-                            if (!string.IsNullOrWhiteSpace(path))
-                            {
-                                var asset = new MediaAsset()
-                                {
-                                    Name = GetString(cursor, MediaStore.Images.ImageColumns.DisplayName),
-                                    PreviewPath = path
-                                };
-
-                                OnMediaAssetLoaded?.Invoke(this, new MediaEventArgs(asset));
-                                assets.Add(asset);
-                            }
-
-                            if (stopLoad)
-                                break;
-                        }
-                    }
-                });
-            }
-            return assets;
-        }*/
-
         async Task<IList<MediaAsset>> LoadMediaAsync()
         {
             IList<MediaAsset> assets = new List<MediaAsset>();
@@ -232,12 +189,9 @@ namespace CustomMediaGallery.Droid.Services
                                         PreviewPath = filePath,
                                         Path = path
                                     };
-                                   // if(assets.Count % 10 == 0)
-                                    //{
-                                        using (var h = new Handler(Looper.MainLooper))
+                                  
+                                    using (var h = new Handler(Looper.MainLooper))
                                             h.Post(async () => {  OnMediaAssetLoaded?.Invoke(this, new MediaEventArgs(asset)); });
-
-                                   // }
 
                                     assets.Add(asset);
                                 }

@@ -50,7 +50,6 @@ namespace CustomMediaGallery.iOS.Services
             // Registering a lambda into the cancellationToken
             cancelToken.Value.Register(() =>
             {
-                // We received a cancellation message, cancel the TaskCompletionSource.Task
                 requestStop = true;
                 taskCompletionSource.TrySetCanceled();
             });
@@ -107,11 +106,8 @@ namespace CustomMediaGallery.iOS.Services
                             Id = phAsset.LocalIdentifier,
                             Name = name,
                             Type = phAsset.MediaType == PHAssetMediaType.Image ? MediaAssetType.Image : MediaAssetType.Video,
-                           // PreviewPath = fileName,
-                            //Path = fileName
                         };
                        
-                        // new CGSize(width: phAsset.PixelWidth, height: phAsset.PixelHeight)
                         imageManager.RequestImageForAsset(phAsset,thumbnailSize, PHImageContentMode.AspectFit, thumbnailRequestOptions, (image, info) =>
                         {
 
@@ -174,20 +170,6 @@ namespace CustomMediaGallery.iOS.Services
                                             if (error == null)
                                             {
                                                 asset.Path = fileName;
-                                                /*var asset = new MediaAsset()
-                                                {
-                                                    Name = name,
-                                                    Type = MediaAssetType.Image,
-                                                    PreviewPath = fileName,
-                                                    Path = fileName
-                                                };
-
-                                                UIApplication.SharedApplication.InvokeOnMainThread(delegate
-                                                {
-                                                    OnMediaAssetLoaded?.Invoke(this, new MediaEventArgs(asset));
-                                                });
-
-                                                assets.Add(asset);*/
                                             }
 
                                         }
@@ -211,20 +193,6 @@ namespace CustomMediaGallery.iOS.Services
                                       
 
                                         tcs.TrySetResult(true);
-                                        /*var mediaAsset = new MediaAsset()
-                                        {
-                                            Name = name,
-                                            Type = MediaAssetType.Video,
-                                            PreviewPath = string.Empty,
-                                            Path = path
-                                        };
-
-                                        UIApplication.SharedApplication.InvokeOnMainThread(delegate
-                                        {
-                                            OnMediaAssetLoaded?.Invoke(this, new MediaEventArgs(mediaAsset));
-                                        });
-
-                                        assets.Add(mediaAsset);*/
                                     }
                                     else
                                     {

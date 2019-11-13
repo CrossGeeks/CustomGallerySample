@@ -4,7 +4,9 @@
               xmlns:videoPlayer="clr-namespace:Octane.Xamarin.Forms.VideoPlayer;assembly=clr-namespace:Octane.Xamarin.Forms.VideoPlayer;assembly=Octane.Xamarin.Forms.VideoPlayer"
              x:Class="CustomMediaGallery.VideoDetailPage">
     <ContentPage.Content>
-        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="0">
+        <StackLayout VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand"
+                     Spacing="0">
            <videoPlayer:VideoPlayer x:Name="videoPlayer"  AutoPlay="True" />
         </StackLayout>
     </ContentPage.Content>

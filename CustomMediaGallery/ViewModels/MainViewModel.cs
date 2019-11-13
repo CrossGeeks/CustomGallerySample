@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using CustomMediaGallery.Models;
@@ -22,6 +21,17 @@ namespace CustomMediaGallery.ViewModels
         public string SearchText { get; set; }
         public ObservableCollection<MediaAsset> MediaAssets { get; set; }
 
+        MediaAsset _mediaSelected;
+        public MediaAsset MediaSelected
+        {
+            get { return _mediaSelected; }
+            set
+            {
+                _mediaSelected = value;
+                if (_mediaSelected != null)
+                    OnItemTapped(_mediaSelected);
+            }
+        }
         public ICommand ItemTappedCommand { get; set; }
 
         public MainViewModel(IMediaService mediaService)

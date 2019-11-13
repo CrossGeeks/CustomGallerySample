@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using CustomMediaGallery.iOS.Services;
+﻿using CustomMediaGallery.iOS.Services;
 using CustomMediaGallery.Services;
+using DLToolkit.Forms.Controls;
 using Foundation;
 using Octane.Xamarin.Forms.VideoPlayer.iOS;
 using UIKit;
@@ -29,6 +27,7 @@ namespace CustomMediaGallery.iOS
             Forms.SetFlags("CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init();
             FormsVideoPlayer.Init();
+            FlowListView.Init();
             LoadApplication(new App(mediaService));
 
             return base.FinishedLaunching(app, options);
