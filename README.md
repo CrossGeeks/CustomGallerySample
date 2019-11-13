@@ -6,4 +6,4 @@
 </p>
 
 
-Blog post: https:/xamboy.com
+Blog post: http://www.xamboy.com/2019/11/13/getting-device-media-and-show-it-using-xamarin-forms/
